@@ -98,7 +98,7 @@ if use_webcam:
     cv2.destroyAllWindows()
 else:
     # Load the local image
-    image_path = os.path.join(home_directory, 'path', 'to', 'your', 'rice_field_image.jpg')
+    image_path = os.path.join(home_directory, 'data', 'source', 'rice_field.jpg')
     frame = cv2.imread(image_path)
 
     if frame is None:
