@@ -1,4 +1,5 @@
 #not finall code
+
 import torch
 import cv2
 import numpy as np
@@ -61,35 +62,57 @@ def detect_rice_fields(frame, current_age):
     
     return frame, unhealthy_count
 
-# Capture video from the webcam
-cap = cv2.VideoCapture(0)
+# Capture video from the webcam or load an image
+use_webcam = True  # Set to False to use a local image
 
-if not cap.isOpened():
-    print("Error: Could not open webcam.")
-    exit()
+if use_webcam:
+    cap = cv2.VideoCapture(0)
 
-# Define the current age of the crop in months
-current_age = 1  # Change this based on the crop's age
+    if not cap.isOpened():
+        print("Error: Could not open webcam.")
+        exit()
 
-while True:
-    # Read a frame from the webcam
-    ret, frame = cap.read()
-    if not ret:
-        print("Error: Failed to capture image")
-        break
+    # Define the current age of the crop in months
+    current_age = 1  # Change this based on the crop's age
 
-    # Detect rice fields in the frame
+    while True:
+        # Read a frame from the webcam
+        ret, frame = cap.read()
+        if not ret:
+            print("Error: Failed to capture image")
+            break
+
+        # Detect rice fields in the frame
+        frame, unhealthy_count = detect_rice_fields(frame, current_age)
+
+        # Display the frame with the count of unhealthy areas
+        cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        cv2.imshow('Rice Field Detection', frame)
+
+        # Exit loop if 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    # Release the webcam and close all OpenCV windows
+    cap.release()
+    cv2.destroyAllWindows()
+else:
+    # Load the local image
+    image_path = os.path.join(home_directory, 'path', 'to', 'your', 'rice_field_image.jpg')
+    frame = cv2.imread(image_path)
+
+    if frame is None:
+        print(f"Error: Unable to load image from {image_path}")
+        exit()
+
+    # Define the current age of the crop in months
+    current_age = 1  # Change this based on the crop's age
+
+    # Detect rice fields in the image
     frame, unhealthy_count = detect_rice_fields(frame, current_age)
 
-    # Display the frame with the count of unhealthy areas
+    # Display the image with the count of unhealthy areas
     cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     cv2.imshow('Rice Field Detection', frame)
-
-    # Exit loop if 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# Release the webcam and close all OpenCV windows
-cap.release()
-cv2.destroyAllWindows()
-
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
