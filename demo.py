@@ -1,5 +1,4 @@
 #not finall code
-
 import torch
 import cv2
 import numpy as np
@@ -16,8 +15,19 @@ model = torch.hub.load('ultralytics/yolov8', 'custom', path=model_path)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
+# Define a dictionary to map class indices to class names
+class_names = {
+    0: 'Healthy 1 Month',
+    1: 'Unhealthy 1 Month',
+    2: 'Healthy 2 Months',
+    3: 'Unhealthy 2 Months',
+    4: 'Healthy 3 Months',
+    5: 'Unhealthy 3 Months',
+    # Add more classes as needed
+}
+
 # Define the function to detect rice fields
-def detect_rice_fields(frame):
+def detect_rice_fields(frame, current_age):
     # Prepare the image for the model
     input_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     input_image = torch.from_numpy(input_image).permute(2, 0, 1).float().unsqueeze(0).to(device)
@@ -28,22 +38,38 @@ def detect_rice_fields(frame):
     
     # Extract the results
     boxes = results.xyxy[0].cpu().numpy()  # Get the bounding boxes
+    unhealthy_count = 0
     for box in boxes:
         x1, y1, x2, y2, conf, cls = box
+        cls = int(cls)
         if conf > 0.5:  # Confidence threshold
+            # Determine if the detection matches the current age
+            class_name = class_names.get(cls, 'Unknown')
+            if str(current_age) in class_name:
+                color = (0, 255, 0) if 'Healthy' in class_name else (0, 0, 255)
+                label = f"{class_name}: {conf:.2f}"
+                if 'Unhealthy' in class_name:
+                    unhealthy_count += 1
+            else:
+                color = (0, 0, 255)
+                label = f"Unusual: {class_name} ({conf:.2f})"
+                unhealthy_count += 1  # Count as unhealthy if unusual for the age
+            
             # Draw the bounding box
-            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
-            label = f"Rice Field: {conf:.2f}"
-            cv2.putText(frame, label, (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
+            cv2.putText(frame, label, (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
     
-    return frame
+    return frame, unhealthy_count
 
 # Capture video from the webcam
-cap = cv2.VideoCapture(0) #change the device nummber
+cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
     print("Error: Could not open webcam.")
     exit()
+
+# Define the current age of the crop in months
+current_age = 1  # Change this based on the crop's age
 
 while True:
     # Read a frame from the webcam
@@ -53,9 +79,10 @@ while True:
         break
 
     # Detect rice fields in the frame
-    frame = detect_rice_fields(frame)
+    frame, unhealthy_count = detect_rice_fields(frame, current_age)
 
-    # Display the frame
+    # Display the frame with the count of unhealthy areas
+    cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     cv2.imshow('Rice Field Detection', frame)
 
     # Exit loop if 'q' is pressed
@@ -65,3 +92,4 @@ while True:
 # Release the webcam and close all OpenCV windows
 cap.release()
 cv2.destroyAllWindows()
+
