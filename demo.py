@@ -1,20 +1,17 @@
 #not finall code
-
 import torch
 import cv2
 import numpy as np
 import os
+from ultralytics import YOLO  # Make sure you have the ultralytics package installed
 
 # Set the home directory and model path
-home_directory = os.path.expanduser('~/HarvestVision')
+home_directory = os.path.expanduser('D:\\Download\\perkuliahan\\yolo\\HarvestVision')
 model_path = os.path.join(home_directory, 'data', 'yolov8n.pt')
 
 # Load the YOLOv8 model
-model = torch.hub.load('ultralytics/yolov8', 'custom', path=model_path)
-
-# Set device to GPU if available
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.to(device)
+model = YOLO(model_path)
+model.to('cuda' if torch.cuda.is_available() else 'cpu')  # Move model to GPU if available
 
 # Define a dictionary to map class indices to class names
 class_names = {
@@ -31,15 +28,17 @@ class_names = {
 def detect_rice_fields(frame, current_age):
     # Prepare the image for the model
     input_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    input_image = torch.from_numpy(input_image).permute(2, 0, 1).float().unsqueeze(0).to(device)
+    input_image = torch.from_numpy(input_image).permute(2, 0, 1).float().unsqueeze(0) / 255.0  # Normalize to [0, 1]
+    input_image = input_image.to('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Run the model
-    with torch.no_grad():
-        results = model(input_image)
-    
+    results = model(input_image)
+
     # Extract the results
-    boxes = results.xyxy[0].cpu().numpy()  # Get the bounding boxes
+    boxes = results[0].boxes  # Assuming results[0] is a detection result with a 'boxes' attribute
+    boxes = boxes.cpu().numpy()  # Convert to numpy array if necessary
     unhealthy_count = 0
+
     for box in boxes:
         x1, y1, x2, y2, conf, cls = box
         cls = int(cls)
