@@ -2,8 +2,11 @@
 import torch
 import cv2
 import numpy as np
+import time
 import os
 from ultralytics import YOLO  # Make sure you have the ultralytics package installed
+
+pTime = 0
 
 # Set the home directory and model path
 home_directory = os.path.expanduser('D:\\Download\\perkuliahan\\yolo\\HarvestVision')
@@ -83,7 +86,13 @@ if use_webcam:
 
         # Detect rice fields in the frame
         frame, unhealthy_count = detect_rice_fields(frame, current_age)
-
+        success, img = cap.read()
+        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
+        cv2.putText(img, f'FPS:{int(fps)}', (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        
         # Display the frame with the count of unhealthy areas
         cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         cv2.imshow('Rice Field Detection', frame)
