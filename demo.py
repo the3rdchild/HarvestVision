@@ -1,4 +1,5 @@
 #not finall code
+
 import torch
 import cv2
 import numpy as np
@@ -9,7 +10,7 @@ from ultralytics import YOLO  # Make sure you have the ultralytics package insta
 pTime = 0
 
 # Set the home directory and model path
-home_directory = os.path.expanduser('~/HarvestVision')
+home_directory = os.path.expanduser('D:\\Download\\perkuliahan\\yolo\\HarvestVision')
 model_path = os.path.join(home_directory, 'data', 'yolov8n.pt')
 
 # Load the YOLOv8 model
@@ -43,11 +44,14 @@ def detect_rice_fields(frame, current_age):
 
     # Extract the results
     boxes = results[0].boxes  # Assuming results[0] is a detection result with a 'boxes' attribute
-    boxes = boxes.cpu().numpy()  # Convert to numpy array if necessary
     unhealthy_count = 0
 
-    for box in boxes:
-        x1, y1, x2, y2, conf, cls = box
+    # Iterate over the boxes
+    for i in range(boxes.xyxy.shape[0]):
+        x1, y1, x2, y2 = boxes.xyxy[i]
+        conf = boxes.conf[i]
+        cls = boxes.cls[i]
+
         cls = int(cls)
         if conf > 0.5:  # Confidence threshold
             # Determine if the detection matches the current age
@@ -81,6 +85,8 @@ if use_webcam:
     # Define the current age of the crop in months
     current_age = 1  # Change this based on the crop's age
 
+    pTime = 0
+
     while True:
         # Read a frame from the webcam
         ret, frame = cap.read()
@@ -90,15 +96,17 @@ if use_webcam:
 
         # Detect rice fields in the frame
         frame, unhealthy_count = detect_rice_fields(frame, current_age)
-        success, img = cap.read()
-        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        
+        # Calculate and display FPS
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
-        cv2.putText(img, f'FPS:{int(fps)}', (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-        
-        # Display the frame with the count of unhealthy areas
+        cv2.putText(frame, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
+        # Display the count of unhealthy areas
         cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        
+        # Show the frame
         cv2.imshow('Rice Field Detection', frame)
 
         # Exit loop if 'q' is pressed
@@ -128,3 +136,5 @@ else:
     cv2.imshow('Rice Field Detection', frame)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
