@@ -128,7 +128,7 @@ else:
 
     # Display the image with the count of unhealthy areas
     cv2.putText(frame, f'Unhealthy areas: {unhealthy_count}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-    cv2.imshow('Rice Field Detection', frame)
+    cv2.imshow('HV', frame)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
