@@ -10,7 +10,7 @@ from ultralytics import YOLO  # Make sure you have the ultralytics package insta
 pTime = 0
 
 # Set the home directory and model path
-home_directory = os.path.expanduser('D:\\Download\\perkuliahan\\yolo\\HarvestVision')
+home_directory = os.path.expanduser('/media/nops/disk2/Download/perkuliahan/yolo/HarvestVision')
 model_path = os.path.join(home_directory, 'data', 'yolov8n.pt')
 
 # Load the YOLOv8 model
