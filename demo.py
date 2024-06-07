@@ -25,11 +25,6 @@ class_names = {
     3: 'Unhealthy 2 Months',
     4: 'Healthy 3 Months',
     5: 'Unhealthy 3 Months',
-    6: 'Healthy 4 Months',
-    7: 'Unhealthy 4 Months',
-    8: 'Healthy 5 Months',
-    9: 'Unhealthy 5 Months',
-    # Add more classes as needed
 }
 
 # Define the function to detect rice fields
