@@ -24,7 +24,7 @@ class_names = {
     2: 'Healthy 2 Months',
     3: 'Unhealthy 2 Months',
     4: 'Healthy 3 Months',
-    5: 'Unhealthy 3 Months',
+    5: 'Unhealthy 3 Months', #the max of rice ages is about 115 days
 }
 
 # Define the function to detect rice fields
