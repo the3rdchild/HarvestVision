@@ -121,7 +121,7 @@ else:
         exit()
 
     # Define the current age of the crop in months
-    current_age = 1  # Change this based on the crop's age
+    current_age = 0  # Change this based on the crop's age
 
     # Detect rice fields in the image
     frame, unhealthy_count = detect_rice_fields(frame, current_age)
