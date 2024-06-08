@@ -1,4 +1,3 @@
-#not finall code
 
 import torch
 import cv2
