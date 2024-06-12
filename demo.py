@@ -212,8 +212,13 @@ if use_webcam:
 
             label = f"{class_name}: Age {age}"
             color = (0, 0, 255) if 'Brown Spot Area' in class_name else (0, 255, 0)
-            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
-            cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+            cv2.rectangle(frame, 
+                          (x1, y1), 
+                          (x2, y2), 
+                          color, 2)
+            
+            cv2.putText(frame, label, (x1, y1 - 10), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
         # Log results
         log_results(current_week, unhealthy_count, disease_counts)
@@ -244,7 +249,9 @@ if use_webcam:
         # Save image if an unhealthy area is detected
         if unhealthy_count > 0:
             timestamp = int(time.time())
-            result_image_path = os.path.join(result_images_path, f"detected_unhealthy_{timestamp}.png")
+            result_image_path = os.path.join(result_images_path, 
+                                             f"detected_unhealthy_{timestamp}.png")
+            
             cv2.imwrite(result_image_path, frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
