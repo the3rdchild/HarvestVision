@@ -15,7 +15,7 @@ pTime = 0
 
 # Set the home directory and model path
 home_directory = os.path.expanduser('~/HarvestVision')
-model_path = os.path.join(home_directory, 'HarvestVision.pt')
+model_path = os.path.join(home_directory, 'best.pt') # path your model
 result_path = os.path.join(home_directory, 'result', 'out.txt')
 image_path = os.path.join(home_directory, '1.jpg')
 result_images_path = os.path.join(home_directory, 'result', 'images')
