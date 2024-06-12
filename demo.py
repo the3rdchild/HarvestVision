@@ -77,7 +77,13 @@ def detect_rice_fields(frame):
             x1, y1, x2, y2 = box.xyxy[0]
             conf = box.conf[0]
             cls = int(box.cls[0])
-            print(f"Box: ({x1}, {y1}, {x2}, {y2}), Conf: {conf}, Class: {cls}")
+            print(f"Box: (
+            {x1}, 
+            {y1}, 
+            {x2}, 
+            {y2}), 
+            Conf: {conf}, 
+            Class: {cls}")
 
             if conf > 0.5:  # Confidence threshold
                 class_name = class_names.get(cls, 'Unknown')
@@ -152,6 +158,7 @@ def iou(box1, box2):
     inter_area = max(0, xi2 - xi1 + 1) * max(0, yi2 - yi1 + 1)
 
     box1_area = (x2 - x1 + 1) * (y1 - y1 + 1)
+    
     box2_area = (x2_p - x1_p + 1) * (y2_p - y1_p + 1)
 
     union_area = box1_area + box2_area - inter_area
