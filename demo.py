@@ -81,7 +81,18 @@ def detect_rice_fields(frame):
 
             if conf > 0.5:  # Confidence threshold
                 class_name = class_names.get(cls, 'Unknown')
-                detected_boxes.append((x1.item(), y1.item(), x2.item(), y2.item(), conf.item(), cls, class_name))
+                detected_boxes.append
+                (
+                    (
+                    x1.item(), 
+                    y1.item(), 
+                    x2.item(), 
+                    y2.item(), 
+                    conf.item(), 
+                    cls, 
+                    class_name
+                    )
+                )
 
     return frame, detected_boxes
 
@@ -100,7 +111,9 @@ def draw_boxes(frame, detected_boxes):
             color = (255, 0, 0)  # Blue for other stages
 
         cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
-        cv2.putText(frame, f"{class_name}: Age {int(conf*100)}", (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+        cv2.putText(frame, f"{class_name}: Age {int(conf*100)}", (int(x1), int(y1) - 10), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2
+                   )
     return frame
 
 # Function to log results to out.txt
@@ -199,8 +212,18 @@ if use_webcam:
         log_results(current_week, unhealthy_count, disease_counts)
 
         # Display the frame with additional information
-        cv2.putText(frame, f"Unhealthy areas: {unhealthy_count}", (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-        cv2.putText(frame, f"Estimated Age: Week {current_week}", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+        cv2.putText(frame, f"Unhealthy areas: {unhealthy_count}", 
+                    (10, 20), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
+                    (0, 0, 255), 2
+                   )
+        
+        cv2.putText(frame, f"Estimated Age: Week {current_week}", 
+                    (10, 40), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
+                    (0, 255, 0), 2
+                   )
+        
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
@@ -243,8 +266,23 @@ else:
         result_image_path = os.path.join(result_images_path, "detected_unhealthy.png")
         cv2.imwrite(result_image_path, frame)
 
-    cv2.putText(frame, f"Unhealthy areas: {unhealthy_count}", (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-    cv2.putText(frame, f"Estimated Age: Week {current_week}", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-    cv2.imshow("Rice Field Detection", frame)
+    cv2.putText(frame, 
+                f"Unhealthy areas: {unhealthy_count}", 
+                (10, 20), 
+                cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
+                (0, 0, 255), 2
+               )
+    
+    cv2.putText(frame, 
+                f"Estimated Age: Week {current_week}", 
+                (10, 40), 
+                cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
+                (0, 255, 0), 2
+               )
+    
+    cv2.imshow("Rice Field Detection", 
+               frame
+              )
+    
     cv2.waitKey(0)
     cv2.destroyAllWindows()
