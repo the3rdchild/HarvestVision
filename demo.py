@@ -1,4 +1,4 @@
-
+#not final code
 
 import torch
 import cv2
@@ -14,7 +14,7 @@ from class_names import class_names
 pTime = 0
 
 # Set the home directory and model path
-home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision')
+home_directory = os.path.expanduser('~/HarvestVision')
 model_path = os.path.join(home_directory, 'HarvestVision.pt')
 result_path = os.path.join(home_directory, 'result', 'out.txt')
 image_path = os.path.join(home_directory, '1.jpg')
