@@ -234,7 +234,10 @@ if use_webcam:
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
-        cv2.putText(frame, f"FPS: {fps:.2f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
+        cv2.putText(frame, f"FPS: {fps:.2f}", 
+                    (10, 60), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
+                    (255, 0, 0), 2)
 
         cv2.imshow("Rice Field Detection", frame)
 
