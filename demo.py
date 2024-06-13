@@ -8,7 +8,6 @@ import os
 from torchvision import transforms
 from ultralytics import YOLO
 from collections import deque
-
 from class_names import class_names
 
 pTime = 0
