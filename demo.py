@@ -122,6 +122,7 @@ def draw_boxes(frame, detected_boxes):
                       (int(x2), 
                        int(y2)), 
                       color, 2)
+        
         cv2.putText(frame, f"{class_name}: Age {int(conf*100)}", (int(x1), int(y1) - 10), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2
                    )
