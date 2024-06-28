@@ -14,9 +14,9 @@ pTime = 0
 
 # Set the home directory and model path
 home_directory = os.path.expanduser('~/HarvestVision')
-model_path = os.path.join(home_directory, 'data', 'HarvestVision.pt') # path your model
+model_path = os.path.join(home_directory, 'HarvestVision.pt') # path your model
 result_path = os.path.join(home_directory, 'result', 'out.txt')
-image_path = os.path.join(home_directory, 'data', 'source', '1.jpg')
+image_path = os.path.join(home_directory, '1.jpg')
 result_images_path = os.path.join(home_directory, 'result', 'images')
 
 # Create result images directory if it doesn't exist
@@ -76,13 +76,7 @@ def detect_rice_fields(frame):
             x1, y1, x2, y2 = box.xyxy[0]
             conf = box.conf[0]
             cls = int(box.cls[0])
-            print(f"Box: (
-            {x1}, 
-            {y1}, 
-            {x2}, 
-            {y2}), 
-            Conf: {conf}, 
-            Class: {cls}")
+            print(f"Box: ({x1}, {y1}, {x2}, {y2}), Conf: {conf}, Class: {cls}")
 
             if conf > 0.5:  # Confidence threshold
                 class_name = class_names.get(cls, 'Unknown')
