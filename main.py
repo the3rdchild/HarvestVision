@@ -4,9 +4,9 @@ from ultralytics import YOLO
 import os
 from class_names import class_names
 
-home_directory = os.path.expanduser('~/HarvestVision')
+home_directory = os.path.expanduser('~/HarvestVision/')
 model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
-image_path = os.path.join(home_directory, 'Source', '1.jpg')
+image_path = os.path.join(home_directory, 'Source', '1.png')
 result_path = os.path.join(home_directory, 'Result', 'Result.txt')
 final_result_path = os.path.join(home_directory, 'Result', 'Tresult.txt')
 
