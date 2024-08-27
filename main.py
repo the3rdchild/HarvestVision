@@ -4,7 +4,7 @@ from ultralytics import YOLO
 import os
 from class_names import class_names
 
-home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision/github/')
+home_directory = os.path.expanduser('~/HarvestVision')
 model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
 video_path = os.path.join(home_directory, 'Source', 'video.jpg')
 result_path = os.path.join(home_directory, 'Result', 'Result.txt')
@@ -67,14 +67,3 @@ with open(final_result_path, "w") as final_result_txt:
         final_result_txt.write("{}: {}\n".format(cls_name, total))
 
 print("Detections finished. Results are in result.txt and Tresult.txt")
-
-######################### DETAIL OF THE VIDEO #########################
-video = cv2.VideoCapture(video_path)
-total_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-FPS = video.get(cv2.CAP_PROP_FPS)
-MS = total_frames * 1000 / FPS
-ALL = f"Total Video Frame: {total_frames}", f"Video FPS: {FPS}", f"Video Duration: {MS} ms"
-video.release()
-
-f = open(final_result_path, "a")
-f.write(str(ALL))
