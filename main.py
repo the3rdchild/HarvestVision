@@ -6,7 +6,7 @@ from class_names import class_names
 
 home_directory = os.path.expanduser('~/HarvestVision')
 model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
-image_path = os.path.join(home_directory, 'Source', 'image.jpg')
+image_path = os.path.join(home_directory, 'Source', '1.jpg')
 result_path = os.path.join(home_directory, 'Result', 'Result.txt')
 final_result_path = os.path.join(home_directory, 'Result', 'Tresult.txt')
 
