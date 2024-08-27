@@ -1,4 +1,3 @@
-
 class_names = {
     "Brown Spot Disease": 0,
     "Dirty Panicle Disease": 0,
@@ -28,4 +27,4 @@ class_names = {
     "rice_blast_disease": 0,
     "tungro": 0,
     "Brown Spot Area": 0
-    }
+}
