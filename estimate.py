@@ -4,7 +4,7 @@ import time
 import os
 
 home_directory = os.path.expanduser("D:\Download\perkuliahan\yolo\HarvestVision\github\HarvestVision")
-csv_path = os.path.join(home_directory, "result", "result.csv")
+csv_path = os.path.join(home_directory, "result", "Tresult.csv")
 
 data_path = csv_path
 
