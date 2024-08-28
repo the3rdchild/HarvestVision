@@ -23,7 +23,7 @@ python3 estimate.py &
 wait
 ```
 
-## <div align="center">YoloV8 Model</div>
+## YoloV8 Model
 
 the defaul model of yolo is yolov8 located in the [model](https://github.com/the3rdchild/HarvestVision/tree/main/Model) folder with default name:
 ```
