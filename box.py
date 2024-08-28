@@ -21,7 +21,7 @@ while True:
                   save=True, 
                   save_crop=False, 
                   project=image_out, 
-                  name="inference", 
+                  name="HarvestVision", 
                   exist_ok=True)
 
             processed_images.add(image)
