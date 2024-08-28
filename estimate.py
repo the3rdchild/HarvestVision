@@ -3,7 +3,7 @@ import numpy as np
 import time
 import os
 
-home_directory = os.path.expanduser("D:\Download\perkuliahan\yolo\HarvestVision\github\HarvestVision")
+home_directory = os.path.expanduser("~/HarvestVision")
 csv_path = os.path.join(home_directory, "result", "Tresult.csv")
 
 data_path = csv_path
