@@ -1,7 +1,9 @@
 ## <div align="center">HarvestVision</div>
 
-Harvest Vision [HarvestVision](https://github.com/the3rdchild/HarvestVision) is an innovative project focused on leveraging computer vision and AI to analyze crop conditions, yield predictions, and plant health in real time. By utilizing machine learning algorithms and drone imagery, this project aims to empower farmers and agricultural professionals with actionable insights for optimizing harvests and managing crops more effectively.
-It is part of Project of [PPK Ormawa](https://php2d.kemdikbud.go.id/): SMART FARMING: "PENINGKATAN EFEKTIVITAS PERTANIAN DESA KUDANGWANGI DENGAN PENGAPLIKASIAN SEMI AUTONOMOUS DRONE UNTUK  ENYEMPROTAN PESTISIDA SERTA PEMANFAATAN APLIKASI INTEGRASI PADA TANAMAN PADI" (Enhancing Agricultural Effectiveness in Kudangwangi Village through the Application of Semi-Autonomous Drones for Pesticide Spraying and Utilization of Integrated Applications on Rice Crops)
+<div align="center">
+<a href="https://github.com/the3rdchild/HarvestVision/">HarvestVision</a> is an innovative project focused on leveraging computer vision and AI to analyze crop conditions, yield predictions, and plant health in real time. By utilizing machine learning algorithms and drone imagery, this project aims to empower farmers and agricultural professionals with actionable insights for optimizing harvests and managing crops more effectively.
+It is part of Project of <a href="[https://github.com/the3rdchild/HarvestVision/](https://php2d.kemdikbud.go.id/)">PPK Ormawa</a>: SMART FARMING: "PENINGKATAN EFEKTIVITAS PERTANIAN DESA KUDANGWANGI DENGAN PENGAPLIKASIAN SEMI AUTONOMOUS DRONE UNTUK  ENYEMPROTAN PESTISIDA SERTA PEMANFAATAN APLIKASI INTEGRASI PADA TANAMAN PADI" (Enhancing Agricultural Effectiveness in Kudangwangi Village through the Application of Semi-Autonomous Drones for Pesticide Spraying and Utilization of Integrated Applications on Rice Crops)
+</div>
 
 Key Features
 - Real-Time Crop Monitoring: Automatically detects plant health and growth patterns.
