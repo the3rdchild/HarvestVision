@@ -26,5 +26,5 @@ class_names = {
     "rice": 0,
     "rice_blast_disease": 0,
     "tungro": 0,
-    "Brown Spot Area": 0
 }
+
