@@ -2,10 +2,10 @@ import os
 import time
 from ultralytics import YOLO
 
-home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision/')
+home_directory = os.path.expanduser('~/HarvestVision/')
 image_path = os.path.join(home_directory, "Source")
-image_out = os.path.join(home_directory, "Result", "Image")
-model_path = os.path.join(home_directory, 'Model', 'best.pt')
+image_out = os.path.join(home_directory, "Result")
+model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
 
 model = YOLO(model_path)
 processed_images = set()
@@ -21,7 +21,7 @@ while True:
                   save=True, 
                   save_crop=False, 
                   project=image_out, 
-                  name="HarvestVision", 
+                  name="images", 
                   exist_ok=True)
 
             processed_images.add(image)
