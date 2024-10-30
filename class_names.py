@@ -5,6 +5,7 @@ class_names = {
     "Groundnut_Rust": 0,
     "Narrow Brown Spot Disease": 0,
     "Rice Blast Disease": 0,
+    "Rice Blast Disease-": 0,
     "Rice-Blast-Disease": 0,
     "Rice_Bacterial_Blight": 0,
     "Rice_Brown_spot": 0,
