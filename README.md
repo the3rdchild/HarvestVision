@@ -36,7 +36,7 @@ the defaul model of yolo is yolov8 located in the [model](https://github.com/the
 ```
 HarvestVision.pt
 ```
-you can also train your own model and change the class to your data class(es) in [class_names](https://github.com/the3rdchild/HarvestVision/blob/main/class_names.py):
+you can also train your own model or change it to latest model of yolo such yolo11 also change the class to your own data class(es) in [class_names](https://github.com/the3rdchild/HarvestVision/blob/main/class_names.py):
 ```
 class_names = {
     "Your": 0,
