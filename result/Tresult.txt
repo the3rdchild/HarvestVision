@@ -1,1 +1,28 @@
-rice: 12
+Brown Spot Disease: 210
+Dirty Panicle Disease: 218
+Groundnut_Late_leaf_spot: 253
+Groundnut_Rust: 235
+Narrow Brown Spot Disease: 472
+Rice Blast Disease: 468
+Rice Blast Disease-: 468
+Rice-Blast-Disease: 403
+Rice_Bacterial_Blight: 281
+Rice_Brown_spot: 382
+Tomato_Botrytis: 324
+Tomato_Early_Blight: 388
+Wheat_Loose_mut: 435
+Wheat_Steam_rust: 433
+bercak_coklat: 368
+blas: 450
+brown_spot_disease: 459
+dirty_panicle_disease: 310
+early stage: 246
+harvesting stage: 298
+hawar_daun_bakteri: 388
+mid age: 252
+mid satge: 471
+mid stage: 238
+narrow_brown_spot_disease: 237
+rice: 285
+rice_blast_disease: 382
+tungro: 388

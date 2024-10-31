@@ -1,15 +1,12 @@
-import pandas as pd
 import numpy as np
-import time
 import os
 
-home_directory = os.path.expanduser("~/HarvestVision")
+home_directory = os.path.expanduser("D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision")
 csv_path = os.path.join(home_directory, "result", "Tresult.txt")
-
-data_path = csv_path
+estimate_path = os.path.join(home_directory, "result", "estimate.txt")
 
 def adjusted_yield(disease_counts):
-    standard_yield = 6.0
+    standard_yield = 6.0  # tons per hectare baseline
     total_diseases = sum(disease_counts.values())
     average_diseases = total_diseases / len(disease_counts)
     
@@ -19,24 +16,24 @@ def adjusted_yield(disease_counts):
         return max(adjusted_yield, 4)
     return standard_yield
 
-last_mod_time = os.path.getmtime(data_path)
-
-while True:
-    current_mod_time = os.path.getmtime(data_path)
+try:
+    disease_counts = {}
+    with open(csv_path, 'r') as file:
+        for line in file:
+            if ':' in line:
+                disease, count = line.strip().split(':')
+                disease_counts[disease.strip()] = int(count.strip())
     
-    if current_mod_time > last_mod_time: #check updated data
-        last_mod_time = current_mod_time
-        print("Data updated, processing...")
+    final_yield = adjusted_yield(disease_counts)
+    
+    with open(estimate_path, 'w') as file:
+        file.write(f"Predicted Adjusted Yield (tons/ha): {final_yield:.2f}")
+    
+    print(f"Estimate written to {estimate_path}")
 
-        new_data_df = pd.read_csv(data_path)
-        disease_counts = new_data_df.iloc[0].to_dict()
-
-        final_yield = adjusted_yield(disease_counts)
-        print(f"Predicted Adjusted Yield (tons/ha): {final_yield:.2f}")
-    else:
-        time_elapsed = time.time() - last_mod_time
-        if time_elapsed > 300:  #terminate 300 seconds 
-            print("No updates detected in the last 5 minutes. Exiting.")
-            break
-
-    time.sleep(60)
+except FileNotFoundError:
+    print("Tresult.txt not found. Please ensure the file exists in the specified path.")
+except ValueError as ve:
+    print(f"Data parsing error: {ve}")
+except Exception as e:
+    print(f"An error occurred: {e}")
