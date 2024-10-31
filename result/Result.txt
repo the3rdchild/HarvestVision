@@ -1,1 +1,1 @@
-1.jpg: blas: 4 
+test.jpg: rice: 12 

@@ -8,7 +8,8 @@ from class_names import class_names
 home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision/')
 # model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
 model_path = "D:/Download/perkuliahan/yolo/HarvestVision/HarvestVision-m.pt"
-image_path = os.path.join(home_directory, 'Source', '1.jpg')
+# image_path = os.path.join(home_directory, 'Source', '1.jpg')
+image_path = "D:/Download/perkuliahan/yolo/HarvestVision/github/test.jpg"
 result_path = os.path.join(home_directory, 'Result', 'Result.txt')
 final_result_path = os.path.join(home_directory, 'Result', 'Tresult.txt')
 

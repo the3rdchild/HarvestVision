@@ -4,7 +4,8 @@ from ultralytics import YOLO
 
 home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision/')
 # home_directory = os.path.expanduser('~/HarvestVision/')
-image_path = os.path.join(home_directory, "Source")
+# image_path = os.path.join(home_directory, "Source")
+image_path = "D:/Download/perkuliahan/yolo/HarvestVision/github/validation"
 image_out = os.path.join(home_directory, "Result")
 # model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
 model_path = "D:/Download/perkuliahan/yolo/HarvestVision/HarvestVision-m.pt"
