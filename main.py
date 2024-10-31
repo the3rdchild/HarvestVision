@@ -1,48 +1,51 @@
 import cv2
-import time
-from ultralytics import YOLO
 import os
+from ultralytics import YOLO
 from class_names import class_names
 
-# home_directory = os.path.expanduser('~/HarvestVision/')
-home_directory = os.path.expanduser('D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision/')
-# model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
-model_path = "D:/Download/perkuliahan/yolo/HarvestVision/HarvestVision-m.pt"
-# image_path = os.path.join(home_directory, 'Source', '1.jpg')
-image_path = "D:/Download/perkuliahan/yolo/HarvestVision/github/test.jpg"
+# Define paths
+home_directory = os.path.expanduser('~/HarvestVision/')
+model_path = os.path.join(home_directory, "Model", "HarvestVision.pt")
+image_dir = os.path.join(home_directory, "Source")
 result_path = os.path.join(home_directory, 'Result', 'Result.txt')
 final_result_path = os.path.join(home_directory, 'Result', 'Tresult.txt')
 
+# Initialize model
 model = YOLO(model_path)
-image = cv2.imread(image_path)
-if image is None:
-    print(f"Error: Could not open image {image_path}.")
-    exit()
+total_counts = {}
 
-results = model(image)
-class_counts = {}
+# Process each image in the directory
+for filename in os.listdir(image_dir):
+    image_path = os.path.join(image_dir, filename)
+    image = cv2.imread(image_path)
+    
+    # Check if image is loaded properly
+    if image is None:
+        print(f"Error: Could not open image {image_path}. Skipping...")
+        continue
+    
+    # Run the YOLO model on the image
+    results = model(image)
+    class_counts = {}
+    
+    # Count detected classes in the current image
+    for result in results:
+        for cls in result.boxes.cls:
+            cls_name = model.names[int(cls)]
+            class_counts[cls_name] = class_counts.get(cls_name, 0) + 1
+    
+    # Write detection results for this image to Result.txt
+    with open(result_path, "a") as deteksi_txt:
+        deteksi_txt.write(f"{filename}: ")
+        for cls_name, count in class_counts.items():
+            deteksi_txt.write(f"{cls_name}: {count} ")
+            # Update total counts across all images
+            total_counts[cls_name] = total_counts.get(cls_name, 0) + count
+        deteksi_txt.write("\n")
 
-for result in results:
-    for cls in result.boxes.cls:
-        cls_name = model.names[int(cls)]
-        if cls_name in class_counts:
-            class_counts[cls_name] += 1
-        else:
-            class_counts[cls_name] = 1
-
-#result.txt
-with open(result_path, "w") as deteksi_txt:
-    deteksi_txt.write("{}: ".format(os.path.basename(image_path)))
-    for cls_name, count in class_counts.items():
-        deteksi_txt.write("{}: {} ".format(cls_name, count))
-    deteksi_txt.write("\n")
-
-#tresult.txt
-total_counts = class_counts
-
+# Write overall counts to Tresult.txt
 with open(final_result_path, "w") as final_result_txt:
     for cls_name, total in total_counts.items():
-        final_result_txt.write("{}: {}\n".format(cls_name, total))
+        final_result_txt.write(f"{cls_name}: {total}\n")
 
 print("Detection finished. Results are in Result.txt and Tresult.txt")
-

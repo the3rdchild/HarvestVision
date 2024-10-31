@@ -1,12 +1,12 @@
 import numpy as np
 import os
 
-home_directory = os.path.expanduser("D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision")
+home_directory = os.path.expanduser("~/HarvestVision")
 csv_path = os.path.join(home_directory, "result", "Tresult.txt")
 estimate_path = os.path.join(home_directory, "result", "estimate.txt")
 
 def adjusted_yield(disease_counts):
-    standard_yield = 6.0  # tons per hectare baseline
+    standard_yield = 6.89  # tons per hectare baseline
     total_diseases = sum(disease_counts.values())
     average_diseases = total_diseases / len(disease_counts)
     

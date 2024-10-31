@@ -1,1 +1,0 @@
-test.jpg: rice: 12 
