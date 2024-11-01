@@ -4,6 +4,7 @@ from ultralytics import YOLO
 from path import model_path, image_dir, result_path, final_result_path, image_path
 
 model = YOLO(model_path)
+conf_thres = 0.5
 total_counts = {}
 for filename in os.listdir(image_dir):
     image_path = os.path.join(image_dir, filename)
@@ -11,7 +12,7 @@ for filename in os.listdir(image_dir):
     if image is None:
         print(f"Error: Could not open image {image_path}. Skipping...")
         continue
-    results = model(image) #detect
+    results = model(image, conf=conf_thres) #detect
     class_counts = {}
     for result in results:
         for cls in result.boxes.cls:
