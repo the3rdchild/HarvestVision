@@ -1,6 +1,6 @@
 from pathlib import Path
 
-home_dir = Path('D:/Download/perkuliahan/yolo/HarvestVision/github/HarvestVision')
+home_dir = Path('~/HarvestVision')
 model_path = home_dir / 'Model' / "HarvestVision.pt"
 image_dir = home_dir / 'Source'
 result_path = home_dir / 'result' / 'Result.txt'
