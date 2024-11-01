@@ -1,11 +1,7 @@
 import os
 import time
 from ultralytics import YOLO
-
-home_directory = os.path.expanduser('~/HarvestVision/')
-image_path = os.path.join(home_directory, "Source")
-image_out = os.path.join(home_directory, "Result")
-model_path = os.path.join(home_directory, 'Model', 'HarvestVision.pt')
+from path import model_path, model_path, image_path, image_out
 
 model = YOLO(model_path)
 processed_images = set()
