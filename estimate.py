@@ -27,9 +27,9 @@ try:
     final_yield = adjusted_yield(disease_counts)
     
     with open(estimate_path, 'w') as file:
-        file.write(f"Predicted Adjusted Yield (tons/ha): {final_yield:.2f}")
+        file.write(f"Prediksi Hasil Panen (tons/ha): {final_yield:.2f}")
     
-    print(f"Estimate written to {estimate_path}")
+    print(f"Estimasi direkam ke {estimate_path}")
 
 except FileNotFoundError:
     print("Tresult.txt not found. Please ensure the file exists in the specified path.")
