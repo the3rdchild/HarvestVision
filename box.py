@@ -5,6 +5,7 @@ from path import model_path, model_path, image_path, image_out
 
 model = YOLO(model_path)
 processed_images = set()
+conf_thres = 0.69
 
 while True:
     images = [f for f in os.listdir(image_path) if f.endswith(('.png', '.jpg', '.jpeg'))]
@@ -15,6 +16,7 @@ while True:
 
             model(image_file, 
                   save=True, 
+                  conf=conf_thres,
                   save_crop=False, 
                   project=image_out, 
                   name="images", 
