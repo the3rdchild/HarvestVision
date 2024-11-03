@@ -1,5 +1,15 @@
 import numpy as np
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.join(current_dir, '..')
+sys.path.append(parent_dir)
+
 from path import csv_path, estimate_path
+
+print(csv_path) 
+print(estimate_path) 
 
 def adjusted_yield(disease_counts):
     standard_yield = 6.89  # tons per hectare baseline
