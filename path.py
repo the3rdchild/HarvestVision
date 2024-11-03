@@ -1,7 +1,6 @@
 import os
 
 home_dir = os.path.dirname(os.path.abspath(__file__))
-
 csv_path = os.path.join(home_dir, 'result', 'Tresult.txt')
 estimate_path = os.path.join(home_dir, 'estimate', 'estimate.txt')
 model_path = os.path.join(home_dir, 'Model', 'HarvestVision.pt')
