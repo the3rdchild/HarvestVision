@@ -26,13 +26,14 @@ pip install requarement.txt
 
 ## Linux
 Use [run.sh](https://github.com/the3rdchild/rgd/blob/main/run.sh) to run the program. this bash file contain simpel program to run all the python file:
-```
-#!/bin/bash
-path="~/HarvestVision/"
-cd $path || exit
+```bash
+abshpath=$(dirname "$(realpath "$0")")
+cd "$abshpath" || exit
+
 python3 main.py &
 python3 box.py &
-python3 estimate.py &
+python3 "${abshpath}/estimate.py" &
+
 wait
 ```
 
