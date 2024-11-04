@@ -1,5 +1,4 @@
 import os
-import sys
 
 HarvestVision = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(HarvestVision, 'Result', 'Tresult.txt')

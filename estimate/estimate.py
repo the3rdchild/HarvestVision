@@ -1,25 +1,43 @@
 import numpy as np
 import os
 import sys
+import importlib.util
+import matplotlib.pyplot as plt
+import csv
 
 estimate_dir = os.path.dirname(os.path.abspath(__file__))
 HarvestVision = os.path.join(estimate_dir, '..')
 sys.path.append(HarvestVision)
 
-from path import csv_path, estimate_path, kformula
+from path import csv_path, estimate_path, kformula, kmonth
 
-print(kformula)
+spec = importlib.util.spec_from_file_location("k", kformula)
+k_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(k_module)
 
-def adjusted_yield(disease_counts):
-    standard_yield = 6.89  # tons per hectare baseline
+a = k_module.a
+b = k_module.b
+
+def get_all_k_values():
+    k_values = {}
+    with open(kmonth, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            month = row["Months"].strip().capitalize()
+            k_values[month] = float(row["K"])
+    return k_values
+
+def adjusted_yield(disease_counts, a, b, K):
     total_diseases = sum(disease_counts.values())
     average_diseases = total_diseases / len(disease_counts)
     
+    yield_estimate = a * K + b
+    
     if average_diseases > 1100:
         adjustment_factor = np.clip((1100 / average_diseases), 0.67, 0.83)
-        adjusted_yield = standard_yield * adjustment_factor
-        return max(adjusted_yield, 4)
-    return standard_yield
+        yield_estimate *= adjustment_factor
+    
+    return max(yield_estimate, 4)
 
 try:
     disease_counts = {}
@@ -29,16 +47,30 @@ try:
                 disease, count = line.strip().split(':')
                 disease_counts[disease.strip()] = int(count.strip())
     
-    final_yield = adjusted_yield(disease_counts)
-    
-    with open(estimate_path, 'w') as file:
-        file.write(f"Prediksi Hasil Panen (tons/ha): {final_yield:.2f}")
-    
-    print(f"Estimasi direkam ke {estimate_path}")
+    k_values = get_all_k_values()
 
-except FileNotFoundError:
-    print("Tresult.txt not found. Please ensure the file exists in the specified path.")
-except ValueError as ve:
-    print(f"Data parsing error: {ve}")
+    monthly_yields = {}
+    for month, K in k_values.items():
+        monthly_yields[month] = adjusted_yield(disease_counts, a, b, K)
+
+    with open(estimate_path, 'w') as file:
+        for month, yield_value in monthly_yields.items():
+            file.write(f"{month} Prediksi Hasil Panen (tons/ha): {yield_value:.2f}\n")
+    
+    print(f"Estimasi untuk 12 bulan direkam ke {estimate_path}")
+
 except Exception as e:
     print(f"An error occurred: {e}")
+
+months = list(monthly_yields.keys())
+yield_values = list(monthly_yields.values())
+
+plt.figure(figsize=(10, 6))
+plt.plot(months, yield_values, marker='o', color='b', linestyle='-')
+plt.title("Prediksi Hasil Panen (tons/ha) per Bulan")
+plt.xlabel("Bulan")
+plt.ylabel("Hasil Panen (tons/ha)")
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show()
