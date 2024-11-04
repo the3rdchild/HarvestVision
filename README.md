@@ -15,7 +15,7 @@ This repository includes all essential files, code, and documentation to help yo
 
 This code is using pyhton with minimum requarement is [**Python>=3.8**](https://www.python.org/). Download [HarvestVision](https://github.com/the3rdchild/HarvestVision) using
 ```Git
-git clone https://github.com/the3rdchild/HarvestVision/
+git clone https://github.com/the3rdchild/HarvestVision.git
 ```
 
 ## <div align="center">Installation</div>
