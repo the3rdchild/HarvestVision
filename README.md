@@ -19,13 +19,13 @@ git clone https://github.com/the3rdchild/HarvestVision/
 ```
 
 ## <div align="center">Installation</div>
-Install requirement.txt using:
+Install [requirement.txt](https://github.com/the3rdchild/HarvestVision/blob/main/requirement.txt) using:
 ```python
 pip install requarement.txt
 ```
 
-For users encountering the error ModuleNotFoundError: No module named 'dill._dill', try the following steps:
-1. Uninstall the dill package:
+For users encountering the error ```ModuleNotFoundError: No module named 'dill._dill'```, try the following steps:
+1. Uninstall the ```dill``` package:
 ```bash
 pip uninstall dill
 ```
