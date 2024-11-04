@@ -1,4 +1,8 @@
 ## <div align="center">HarvestVision</div>
+<h1 align="center">
+ <img src="https://github.com/the3rdchild/HarvestVision/blob/main/doc/banner.png" />
+</h1>
+<a href="https://github.com/the3rdchild/HarvestVision/">Laporan Tahunan Direktorat Jenderal Tanaman Pangan Tahun 2023</a> 
 
 <div align="center">
 <a href="https://github.com/the3rdchild/HarvestVision/">HarvestVision</a> is an innovative project focused on leveraging computer vision and AI to analyze crop conditions, yield predictions, and plant health in real time. By utilizing machine learning algorithms and drone imagery, this project aims to empower farmers and agricultural professionals with actionable insights for optimizing harvests and managing crops more effectively.
