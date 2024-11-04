@@ -1,9 +1,10 @@
 ## <div align="center">HarvestVision</div>
 <h1 align="center">
  <img src="https://github.com/the3rdchild/HarvestVision/blob/main/doc/banner.png" />
- <a href="https://github.com/the3rdchild/HarvestVision/">Laporan Tahunan Direktorat Jenderal Tanaman Pangan Tahun 2023</a> 
 </h1>
-
+<div align="center">
+Original data:  <a href="https://github.com/the3rdchild/HarvestVision/">Laporan Tahunan Direktorat Jenderal Tanaman Pangan Tahun 2023</a> 
+</div>
 <div align="center">
 <a href="https://github.com/the3rdchild/HarvestVision/">HarvestVision</a> is an innovative project focused on leveraging computer vision and AI to analyze crop conditions, yield predictions, and plant health in real time. By utilizing machine learning algorithms and drone imagery, this project aims to empower farmers and agricultural professionals with actionable insights for optimizing harvests and managing crops more effectively.
 It is part of Project of <a href="[https://github.com/the3rdchild/HarvestVision/](https://php2d.kemdikbud.go.id/)">PPK Ormawa</a>: SMART FARMING: "PENINGKATAN EFEKTIVITAS PERTANIAN DESA KUDANGWANGI DENGAN PENGAPLIKASIAN SEMI AUTONOMOUS DRONE UNTUK  ENYEMPROTAN PESTISIDA SERTA PEMANFAATAN APLIKASI INTEGRASI PADA TANAMAN PADI" (Enhancing Agricultural Effectiveness in Kudangwangi Village through the Application of Semi-Autonomous Drones for Pesticide Spraying and Utilization of Integrated Applications on Rice Crops)
