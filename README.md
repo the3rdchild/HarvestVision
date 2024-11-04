@@ -50,7 +50,7 @@ wait
 
 ## YoloV8 Model
 
-the defaul model of yolo is yolov8 located in the [model](https://github.com/the3rdchild/HarvestVision/tree/main/Model) folder with default name:
+the defaul model of YOLO is [YOLOv8](https://docs.ultralytics.com/models/yolov8) located in the [model](https://github.com/the3rdchild/HarvestVision/tree/main/Model) folder with default name:
 ```
 HarvestVision.pt
 ```
