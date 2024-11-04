@@ -15,14 +15,25 @@ This repository includes all essential files, code, and documentation to help yo
 
 This code is using pyhton with minimum requarement is [**Python>=3.8**](https://www.python.org/). Download [HarvestVision](https://github.com/the3rdchild/HarvestVision) using
 ```Git
-git clone https://github.com/the3rdchild/HarvestVision/
+git clone https://github.com/the3rdchild/HarvestVision.git
 ```
 
 ## <div align="center">Installation</div>
-Install requirement.txt using:
+Install [requirement.txt](https://github.com/the3rdchild/HarvestVision/blob/main/requirement.txt) using:
 ```python
 pip install requarement.txt
 ```
+
+For users encountering the error ```ModuleNotFoundError: No module named 'dill._dill'```, try the following steps:
+1. Uninstall the ```dill``` package:
+```bash
+pip uninstall dill
+```
+2. Reinstall a compatible version:
+```bash
+pip install dill==0.2.8.2
+```
+This should resolve the issue.
 
 ## Linux
 Use [run.sh](https://github.com/the3rdchild/rgd/blob/main/run.sh) to run the program. this bash file contain simpel program to run all the python file:
@@ -39,11 +50,11 @@ wait
 
 ## YoloV8 Model
 
-the defaul model of yolo is yolov8 located in the [model](https://github.com/the3rdchild/HarvestVision/tree/main/Model) folder with default name:
+the defaul model of YOLO is [YOLOv8](https://docs.ultralytics.com/models/yolov8) located in the [model](https://github.com/the3rdchild/HarvestVision/tree/main/Model) folder with default name:
 ```
 HarvestVision.pt
 ```
-you can also train your own model or change it to latest model of yolo such yolo11 also change the class to your own data class(es) in [class_names](https://github.com/the3rdchild/HarvestVision/blob/main/class_names.py):
+you can also train your own model or change it to latest model of yolo such [YOLO11](https://docs.ultralytics.com/models/yolo11) also change the class to your own data class(es) in [class_names](https://github.com/the3rdchild/HarvestVision/blob/main/class_names.py):
 ```
 class_names = {
     "Your": 0,
