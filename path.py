@@ -1,4 +1,5 @@
 import os
+import sys
 
 HarvestVision = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(HarvestVision, 'Result', 'Tresult.txt')
@@ -10,3 +11,4 @@ final_result_path = os.path.join(HarvestVision, 'Result', 'Tresult.txt')
 image_path = os.path.join(HarvestVision, 'Source')
 image_out = os.path.join(HarvestVision, 'Result')
 kmonth = os.path.join(HarvestVision, "Estimate", "K.csv")
+kformula = os.path.join(HarvestVision, "Estimate", "kformula", "k.py")

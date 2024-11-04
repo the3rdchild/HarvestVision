@@ -6,10 +6,9 @@ estimate_dir = os.path.dirname(os.path.abspath(__file__))
 HarvestVision = os.path.join(estimate_dir, '..')
 sys.path.append(HarvestVision)
 
-from path import csv_path, estimate_path
+from path import csv_path, estimate_path, kformula
 
-print(csv_path) 
-print(estimate_path) 
+print(kformula)
 
 def adjusted_yield(disease_counts):
     standard_yield = 6.89  # tons per hectare baseline
