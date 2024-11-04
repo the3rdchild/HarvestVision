@@ -1,13 +1,13 @@
-K,Months
-0.534513309,january
-1.147735171,february
-1.718665871,march
-1.209409784,april
-0.878129008,may
-1.292229978,june
-1.356841477,july
-1.106618763,august
-0.838774731,september
-0.667847948,october
-0.688406152,november
-0.56082781,december 
+K,Months,,
+0.517969618,january,,
+1.100407558,february,,# harvest data in Indonesia by month (differences in seasons in 2023)
+1.982956651,march,,
+1.411633938,april,,
+1.102630604,may,,
+1.075954057,june,,
+0.958132642,july,,
+0.973693961,august,,
+0.971470915,september,,
+0.844757318,october,,
+0.62245276,november,,
+0.437939978,december ,,

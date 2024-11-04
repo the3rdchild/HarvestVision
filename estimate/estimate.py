@@ -55,7 +55,7 @@ try:
 
     with open(estimate_path, 'w') as file:
         for month, yield_value in monthly_yields.items():
-            file.write(f"{month} Prediksi Hasil Panen (tons/ha): {yield_value:.2f}\n")
+            file.write(f"{month} (tons/ha): {yield_value:.2f}\n")
     
     print(f"Estimasi untuk 12 bulan direkam ke {estimate_path}")
 
@@ -67,9 +67,9 @@ yield_values = list(monthly_yields.values())
 
 plt.figure(figsize=(10, 6))
 plt.plot(months, yield_values, marker='o', color='b', linestyle='-')
-plt.title("Prediksi Hasil Panen (tons/ha) per Bulan")
-plt.xlabel("Bulan")
-plt.ylabel("Hasil Panen (tons/ha)")
+plt.title("Crop yield predictions (tons/ha) per month")
+plt.xlabel("Month")
+plt.ylabel("tons/ha")
 plt.xticks(rotation=45)
 plt.grid(True)
 plt.tight_layout()

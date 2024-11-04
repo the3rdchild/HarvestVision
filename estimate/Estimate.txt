@@ -1,12 +1,12 @@
-January Prediksi Hasil Panen (tons/ha): 5.56
-February Prediksi Hasil Panen (tons/ha): 6.21
-March Prediksi Hasil Panen (tons/ha): 6.81
-April Prediksi Hasil Panen (tons/ha): 6.27
-May Prediksi Hasil Panen (tons/ha): 5.92
-June Prediksi Hasil Panen (tons/ha): 6.36
-July Prediksi Hasil Panen (tons/ha): 6.43
-August Prediksi Hasil Panen (tons/ha): 6.16
-September Prediksi Hasil Panen (tons/ha): 5.88
-October Prediksi Hasil Panen (tons/ha): 5.70
-November Prediksi Hasil Panen (tons/ha): 5.72
-December Prediksi Hasil Panen (tons/ha): 5.59
+January (tons/ha): 5.56
+February (tons/ha): 6.21
+March (tons/ha): 6.81
+April (tons/ha): 6.27
+May (tons/ha): 5.92
+June (tons/ha): 6.36
+July (tons/ha): 6.43
+August (tons/ha): 6.16
+September (tons/ha): 5.88
+October (tons/ha): 5.70
+November (tons/ha): 5.72
+December (tons/ha): 5.59
