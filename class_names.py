@@ -27,5 +27,5 @@ class_names = {
     "rice": 0,
     "rice_blast_disease": 0,
     "tungro": 0,
-}
+} # you can chnage the class name based on your own yolo model
 
