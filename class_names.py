@@ -24,7 +24,6 @@ class_names = {
     "mid satge": 0,
     "mid stage": 0,
     "narrow_brown_spot_disease": 0,
-    "rice": 0,
     "rice_blast_disease": 0,
     "tungro": 0,
 } # you can chnage the class name based on your own yolo model
