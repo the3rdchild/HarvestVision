@@ -24,6 +24,17 @@ Install requirement.txt using:
 pip install requarement.txt
 ```
 
+For users encountering the error ModuleNotFoundError: No module named 'dill._dill', try the following steps:
+1. Uninstall the dill package:
+```bash
+pip uninstall dill
+```
+2. Reinstall a compatible version:
+```bash
+pip install dill==0.2.8.2
+```
+This should resolve the issue.
+
 ## Linux
 Use [run.sh](https://github.com/the3rdchild/rgd/blob/main/run.sh) to run the program. this bash file contain simpel program to run all the python file:
 ```bash
