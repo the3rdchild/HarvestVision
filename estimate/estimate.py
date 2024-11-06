@@ -65,12 +65,19 @@ except Exception as e:
 months = list(monthly_yields.keys())
 yield_values = list(monthly_yields.values())
 
-plt.figure(figsize=(10, 6))
-plt.plot(months, yield_values, marker='o', color='b', linestyle='-')
-plt.title("Crop yield predictions (tons/ha) per month")
-plt.xlabel("Month")
-plt.ylabel("tons/ha")
-plt.xticks(rotation=45)
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+# # border color
+# plt.figure(figsize=(10, 6), facecolor="white")
+# # plot color
+# plt.gca().set_facecolor("lightgreen")
+
+stylesheets = ['dark_background'] #Solarize_Light2, 
+for style in stylesheets:
+    plt.style.use(style)
+    plt.plot(months, yield_values, marker='o', markerfacecolor='lightgreen', color='lightyellow', linestyle='-')
+    plt.title("Crop yield predictions (tons/ha) per month")
+    plt.xlabel("Month")
+    plt.ylabel("tons/ha")
+    plt.xticks(rotation=45)
+    plt.grid(color = 'gray', linestyle = 'dotted', linewidth = 1)
+    plt.tight_layout()
+    plt.show()
