@@ -1,6 +1,6 @@
 ## <div align="center">HarvestVision</div>
 <h1 align="center">
- <img src="https://github.com/the3rdchild/HarvestVision/blob/main/doc/banner.png" />
+ <img src="https://github.com/the3rdchild/HarvestVision/blob/main/doc/image.png" />
 </h1>
 <div align="center">
 Original data:  <a href="https://tanamanpangan.pertanian.go.id/assets/front/uploads/document/LAPORAN%20TAHUNAN%202023.pdf">Laporan Tahunan Direktorat Jenderal Tanaman Pangan Tahun 2023</a> 
