@@ -1,3 +1,5 @@
 dill==0.2.8.2
-cv2
+opencv-python
 ultralytics
+numpy
+matplotlib
