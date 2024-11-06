@@ -70,7 +70,7 @@ yield_values = list(monthly_yields.values())
 # # plot color
 # plt.gca().set_facecolor("lightgreen")
 
-stylesheets = ['dark_background'] #Solarize_Light2, 
+stylesheets = ['dark_background'] #Solarize_Light2 also good. 
 for style in stylesheets:
     plt.style.use(style)
     plt.plot(months, yield_values, marker='o', markerfacecolor='lightgreen', color='lightyellow', linestyle='-')
