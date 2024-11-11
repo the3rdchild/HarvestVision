@@ -77,7 +77,7 @@ for style in stylesheets:
     plt.title("Crop yield predictions (tons/ha) per month")
     plt.xlabel("Month")
     plt.ylabel("tons/ha")
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=50)
     plt.grid(color = 'gray', linestyle = 'dotted', linewidth = 1)
     plt.tight_layout()
     plt.show()
